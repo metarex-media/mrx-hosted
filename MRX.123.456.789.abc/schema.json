@@ -1,0 +1,51 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/metarex.media/mrx-hosted/MRX.123.456.789.abc/schema.json",
+    "title": "Metarex register entry",
+    "type": "object",
+    "description": "v0.2.0 - DRAFT schema for register entries - see the specification",
+    "properties": {
+        "metarexId": {
+            "type": "string",
+            "pattern": "MRX(\\.([0-9abcdefghjkmnpqrstuvwxyz]{3})){4}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
+            "description": "an MRX generated ID matching the pattern or a uuid type 1 | type 4"
+        },
+        "name": {
+            "type": "string",
+            "maxLength": 128,
+            "description": "A short human readable UTF-8 name for the metadata payload in the language of its intended use."
+        },
+        "description": {
+            "type": "string",
+            "description": "A short human readable UTF-8 description of the type of metadata with this is ID in the language of its intended use."
+        },
+        "media-type": {
+            "type": "string",
+            "description": "a valid media-type for the unwrapped metadata payload when sent using a POST request to a web service (https://www.iana.org/assignments/media-types/)"
+        },
+        "mrx": {
+            "type": "object",
+            "description": "mrx controlled properties that enhance the metadata definition",
+            "properties": {
+                "specification": {
+                    "type": ["string", "array"],
+                    "description": "A valid url (or array or urls) that resolves to specify the metadata structure."
+                },
+                "schema":{
+                    "type": ["string", "array"],
+                    "description": "A valid url (or array or urls) that resolves to validate the metadata structure."
+                }
+            }
+        },
+        "extra": {
+            "type": "object",
+            "description": "registrant controlled properties that enhance the metadata definition"
+        },
+        "required": [
+            "metarexId",
+            "name",
+            "description",
+            "media-type"
+        ]
+    }
+}
