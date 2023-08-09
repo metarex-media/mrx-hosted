@@ -34,6 +34,9 @@
                 "schema":{
                     "type": ["string", "array"],
                     "description": "A valid url (or array or urls) that resolves to validate the metadata structure."
+                },
+                "services":{
+                    "type":"object"
                 }
             }
         },
@@ -47,5 +50,6 @@
             "description",
             "media-type"
         ]
-    }
+    },
+    "additionalProperties": false
 }
