@@ -44,14 +44,12 @@ system. It should therefore be as short and descriptive as possible and it shoul
 be in the language of the intended audience. If internationalization is required
 then please join the [MetaRex] project and help us define a mechanism for this.
 
-Examples:
-
-* `MRX.123.456.789.abc`  **name**="_MetaRex Register Entry_" (data defined by the
+* **Example**: `MRX.123.456.789.abc`  **name**="_MetaRex Register Entry_" (data defined by the
   document you're reading now)
-* `383bdadd-173f-48ef-8eda-39463dccc103` **name**="_Acteurs à l'écran_"
+* **Example**: `383bdadd-173f-48ef-8eda-39463dccc103` **name**="_Acteurs à l'écran_"
   temporary registration of actors on screen while logging a French movie in
   France.
-* `0c3c284b-1a93-4cfe-b5b6-11fdfb584bf7` **name**="_露出計の測定値_" Light meter
+* **Example**: `0c3c284b-1a93-4cfe-b5b6-11fdfb584bf7` **name**="_露出計の測定値_" Light meter
   readings taken on-set in Japan for a Japanese production.
 
 ### `description` - required
@@ -62,12 +60,33 @@ easily read on a mobile device. It should be in the intended language of the
 audience. If internationalisation is required, then please join the [MetaRex]
 project and help us design a lightweight mechanism for this.
 
-### `media-type` - required
+### `mediaType` - required
 
 An application in a [MetaRex] system may choose to use one of the services
-published in the register to process the metadata. The `media-type` field is the
+published in the register to process the metadata. The `mediaType` field is the
 [Content-Type] of the unwrapped payload if it were placed in an [HTTP] response
 or an [HTTP] [POST] request.
+
+### `timing` (optional)
+
+This field is a _hint_ for timeline processing by automation. If present, the
+`timing` field shall have be one of the values below:
+
+* `clocked` when there is one document per frame (MXF frame wrapping).
+*  `embedded` when the timing is inside the metadata document or binary blob
+
+### 'treatAs' (optional)
+
+This field is a _hint_ for metadata processing by automation. If present, the
+`treatAs` field shall have be one of the values below:
+
+* `text` when the metadata is treated as plain text in a text processor
+  * **Examples**:  JSON, YAML, XML, csv, txt
+* `binary` when the metadata needs to be processed by some service or
+  application. Dumb automation systems usually treat this type of metadata as an
+  opaque binary blob. examples:
+  * **Examples**: machine data,  word documents, excel spreadsheets, jpeg
+    images, png images, pdf documents
 
 ### `mrx` - extensions controlled by [MetaRex]
 
