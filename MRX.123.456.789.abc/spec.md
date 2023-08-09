@@ -72,8 +72,13 @@ or an [HTTP] [POST] request.
 This field is a _hint_ for timeline processing by automation. If present, the
 `timing` field shall have be one of the values below:
 
-* `clocked` when there is one document per frame (MXF frame wrapping).
-*  `embedded` when the timing is inside the metadata document or binary blob
+* `clocked` when the timing of the metadata is controlled by the metarex
+  wrapper. This is typically one document per frame (MXF frame wrapping).
+  This includes the case where the metadata needs to be applied to every sample
+  in a sequence (e.g. static lighting position in a scene)
+* `embedded` when the timing is inside the metadata document or binary blob.
+  This includes the case where a document with no timing generically applies to
+  an entire composition / scene / title etc (e.g. serial number of a camera)
 
 ### 'treatAs' (optional)
 
