@@ -103,17 +103,17 @@ recommended that an extension of the base [MetaRex] [schema] is created for
 Use-Cases to specify these requirements rather than relying on the good behavior
 of humans typing into the register.
 
-#### `specification`
+### `sample`
 
-A string or array of url strings that resolve to human readable specification(s)
-of the data.
+A url string or array of url strings that resolve to samples of the metadata
+defined by this [metaRex] entryß.
 
 #### `schema`
 
-A string or array of url strings that resolve to machine processable schema(s)
-that can be used to validate the data. If there is no such schema possible (e.g.
-because the metadata is binary and not text) then a validation service may be
-published.
+A url string or array of url strings that resolve to machine processable
+schema(s) that can be used to validate the data. If there is no such schema
+possible (e.g. because the metadata is binary and not text) then a validation
+service may be published.
 
 #### `services` - format TBD
 
@@ -121,6 +121,11 @@ An object that defines services available to process metadata defined by a
 [MetaRex] register entry. If you're interested in monetizing metadata generated
 by your products, then please join the [MetaRex] project and help us define this
 section to allow for low-effort interoperability for complex metadata.
+
+#### `specification`
+
+A url string or array of url strings that resolve to human readable
+specification(s) of the data.
 
 ### `extra` - extensions controlled by the registrant
 
