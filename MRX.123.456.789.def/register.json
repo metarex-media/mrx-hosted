@@ -1,0 +1,11 @@
+{
+  "metarexId": "MRX.123.456.789.def",
+  "name": "Unreal Engine 3D position data",
+  "description": "3D position data from unreal engine in CSV format. Sample available: Rexy's sunbathing scene.",
+  "media-type": "text/csv",
+  "timing": "embedded",
+  "treatAs": "text",
+  "mrx": {
+    "specification": "https://docs.unrealengine.com/4.27/en-US/TestingAndOptimization/PerformanceAndProfiling/CSVProfiler"
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "metarexId": "MRX.123.456.789.abc",
+    "name": "MetaRex Register Entry",
+    "description": "JSON for v1 MetaRex register entry",
+    "media-type": "application/json",
+    "mrx": {
+      "specification": "https://github.com/metarex-media/mrx-hosted/blob/main/MRX.123.456.789.abc/spec.md",
+      "schema": "https://raw.githubusercontent.com/metarex-media/mrx-hosted/main/MRX.123.456.789.abc/schema.json"
+    }
+  }

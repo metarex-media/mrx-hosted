@@ -93,6 +93,14 @@ This field is a _hint_ for metadata processing by automation. If present, the
   * **Examples**: machine data,  word documents, excel spreadsheets, jpeg
     images, png images, pdf documents
 
+### `expires` (optional)
+
+The UTC date/time in ISO 8601 format when the entry may be removed from the
+register. If the field is absent then the entry is permanent and never expires.
+The entity managing the register may remove all expired entries at any time
+after the `expires` date. The persistance of any entry after this date cannot
+be guaranteed.
+
 ### `mrx` - extensions controlled by [MetaRex]
 
 #### Overview
@@ -106,7 +114,7 @@ of humans typing into the register.
 ### `sample`
 
 A url string or array of url strings that resolve to samples of the metadata
-defined by this [metaRex] entryß.
+defined by this [metaRex] entry.
 
 #### `schema`
 
