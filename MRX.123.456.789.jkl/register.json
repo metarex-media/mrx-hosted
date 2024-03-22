@@ -3,8 +3,9 @@
   "name": "Unreal Engine Lighting Information",
   "description": "Unreal Engine Lighting Information as a CSV per sequence. Sample available: Rexy's sunbathing scene.",
   "media-type": "text/csv",
-  "timing": "embedded",
+  "timingIs": "embedded",
   "treatAs": "text",
+  "registerEntrySemVer": "0.2.0",
   "mrx": {
     "specification": "https://docs.unrealengine.com/4.26/en-US/Resources/ContentExamples/Lighting/2_1/"
   }

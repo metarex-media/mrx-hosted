@@ -3,6 +3,9 @@
     "name": "MetaRex Register Entry",
     "description": "JSON for v1 MetaRex register entry",
     "media-type": "application/json",
+    "registerEntrySemVer": "v0.1.0",
+    "expiresOn": "2024-03-23",
+    "replacedBy": "MRX.123.456.789.reg",
     "mrx": {
       "specification": "https://github.com/metarex-media/mrx-hosted/blob/main/MRX.123.456.789.abc/spec.md",
       "schema": "https://raw.githubusercontent.com/metarex-media/mrx-hosted/main/MRX.123.456.789.abc/schema.json"

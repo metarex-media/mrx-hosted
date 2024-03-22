@@ -3,7 +3,7 @@
     "$id": "https://github.com/metarex.media/mrx-hosted/MRX.123.456.789.abc/schema.json",
     "title": "Metarex register entry",
     "type": "object",
-    "description": "v0.2.0 - DRAFT schema for register entries - see the specification",
+    "description": "0.2.0 - DRAFT schema for register entries - see the specification",
     "properties": {
         "metarexId": {
             "type": "string",
@@ -23,7 +23,7 @@
             "type": "string",
             "description": "a valid media type for the unwrapped metadata payload when sent using a POST request to a web service (https://www.iana.org/assignments/media-types/)"
         },
-        "timing": {
+        "timingIs": {
             "type":"string",
             "pattern":"clocked|embedded",
             "description": "clocked when there is one document per frame (MXF frame wrapping). embedded when the timing is inside the metadata document | blob"

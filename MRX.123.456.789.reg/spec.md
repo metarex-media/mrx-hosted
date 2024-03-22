@@ -1,4 +1,4 @@
-# MRX.123.456.789.abc - MetaRex register entry
+# MRX.123.456.789.reg - MetaRex register entry
 
 * STATUS: **draft**
 * DATE: 2023-08-08
@@ -44,7 +44,7 @@ system. It should therefore be as short and descriptive as possible and it shoul
 be in the language of the intended audience. If internationalization is required
 then please join the [MetaRex] project and help us define a mechanism for this.
 
-* **Example**: `MRX.123.456.789.abc`  **name**="_MetaRex Register Entry_" (data defined by the
+* **Example**: `MRX.123.456.789.reg`  **name**="_MetaRex Register Entry_" (data defined by the
   document you're reading now)
 * **Example**: `383bdadd-173f-48ef-8eda-39463dccc103` **name**="_Acteurs à l'écran_"
   temporary registration of actors on screen while logging a French movie in
@@ -93,7 +93,7 @@ This field is a _hint_ for metadata processing by automation. If present, the
   * **Examples**: machine data,  word documents, excel spreadsheets, jpeg
     images, png images, pdf documents
 
-### `expiresOn` (optional)
+### `expiresOn` (conditional)
 
 The UTC date/time in ISO 8601 format when the entry becomes deprecated.
 
@@ -107,13 +107,24 @@ The entity managing the register may remove all expired entries
 at any time after the `expiresOn` date. The persistance of any entry after this
 date cannot be guaranteed.
 
+### `replacedBy` (optional)
+
+The `metarexId` that replaces this one. The `metarexId` must exist.
+
+This field is ignored if there is no `expiresOn` field.
+
+### `replaces` (optional)
+
+The `metarexId` that this entry replaces. The replaced `metarexId` may have
+been deleted from the register.
+
 ### `registerEntrySemVer`
 
 A [semver](https://semver.org/) string representing the version of this
 document. This version of the document is:
 
 ```json
-  "registerEntrySemVer": "0.1.0",
+  "registerEntrySemVer": "0.2.0",
 ```
 
 ***
@@ -163,6 +174,6 @@ If custom elements are required then they should be put in the `extra` object.
 [json]:         https://www.json.org
 [metarex]:      https://metarex.media
 [post]:         https://datatracker.ietf.org/doc/html/rfc7231#section-4.3.3
-[schema]:       https://github.com/metarex.media/mrx-hosted/MRX.123.456.789.abc/schema.json
+[schema]:       https://github.com/metarex.media/mrx-hosted/MRX.123.456.789.reg/schema.json
 [UUID]:         https://datatracker.ietf.org/doc/html/rfc4122
 [yaml]:         https://yaml.org
