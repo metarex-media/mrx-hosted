@@ -1,0 +1,11 @@
+{
+    "metarexId": "MRX.123.456.789.rnj",
+    "mediaType": "application/json",
+    "name": "NAB RNF csv",
+    "description": "An input json",
+    "timing": "embedded",
+    "treatAs": "text",
+    "mrx": {
+        "specification": ""
+    }
+}

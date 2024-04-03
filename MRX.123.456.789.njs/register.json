@@ -1,0 +1,33 @@
+{
+    "metarexId": "MRX.123.456.789.njs",
+    "mediaType": "application/json",
+    "name": "NAB NinJS",
+    "description": "NinJS data to be used in the Metarex NAB Demo",
+    "timing": "clocked",
+    "treatAs": "text",
+    "mrx": {
+        "specification": "",
+        "services": [
+            {
+                "API": "http://localhost:9000/ninjsToMD",
+                "method": "",
+                "metarexId": "",
+                "APISchema": "./DemoAPI.yaml",
+                "output": "MRX.123.456.789.nmd",
+                "description": "Convert Ninjs to a simple markdown via an API",
+                "serviceID": "toNewsMD",
+                "parameters": null
+            },
+            {
+                "API": "http://localhost:9000/ninjsToNewsml",
+                "method": "",
+                "metarexId": "",
+                "APISchema": "./DemoAPI.yaml",
+                "output": "MRX.123.456.789.nml",
+                "description": "Convert to newml",
+                "serviceID": "toNewsML",
+                "parameters": null
+            }
+        ]
+    }
+}

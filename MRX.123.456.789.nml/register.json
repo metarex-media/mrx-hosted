@@ -1,0 +1,43 @@
+{
+    "metarexId": "MRX.123.456.789.nml",
+    "mediaType": "application/xml",
+    "name": "NAB NewsML",
+    "description": "A simple version of the KnowledgeItem of Newsml",
+    "timing": "clocked",
+    "treatAs": "text",
+    "mrx": {
+        "specification": "https://iptc.org/std/NewsML-G2/2.31/specification/NewsML-G2-2.31-specification.html",
+        "schema": "/workspace/mrx-elt-first-demo/api/ninjs/schema/schema0.xsd",
+        "mapping": {
+            "convertTypes": false,
+            "storeMissed": "tag",
+            "mappingDefinitions": {
+                "contentCreated": [
+                    "contentcreated"
+                ],
+                "end": [
+                    "enddate"
+                ],
+                "lang": [
+                    "language"
+                ],
+                "name": [
+                    "name",
+                    "literal"
+                ],
+                "note": [
+                    "ednote"
+                ],
+                "standardversion": [
+                    "version"
+                ],
+                "start": [
+                    "startdate"
+                ],
+                "versionCreated": [
+                    "versioncreated"
+                ]
+            }
+        }
+    }
+}

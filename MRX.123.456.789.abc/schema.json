@@ -19,7 +19,7 @@
             "type": "string",
             "description": "A short human readable UTF-8 description of the type of metadata with this is ID in the language of its intended use."
         },
-        "mediaType": {
+        "media-ype": {
             "type": "string",
             "description": "a valid media type for the unwrapped metadata payload when sent using a POST request to a web service (https://www.iana.org/assignments/media-types/)"
         },
@@ -63,7 +63,7 @@
             "metarexId",
             "name",
             "description",
-            "media-type"
+            "media-ype"
         ]
     },
     "additionalProperties": false

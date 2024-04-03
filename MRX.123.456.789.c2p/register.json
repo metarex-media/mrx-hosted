@@ -1,0 +1,11 @@
+{
+    "metarexId": "MRX.123.456.789.c2p",
+    "mediaType": "application/json",
+    "name": "NAB MRX",
+    "description": "The c2pa manifest",
+    "timing": "embedded",
+    "treatAs": "text",
+    "mrx": {
+        "specification": ""
+    }
+}

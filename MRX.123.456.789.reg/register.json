@@ -1,0 +1,28 @@
+{
+  "metarexId": "MRX.123.456.789.reg",
+  "name": "MetaRex Register Entry",
+  "description": "JSON for MetaRex register entries",
+  "media-type": "application/json",
+  "registerEntrySemVer": "0.2.0",
+  "replaces": ["MRX.123.456.789.reg"],
+  "mrx": {
+    "specification": "https://github.com/metarex-media/mrx-hosted/blob/main/MRX.123.456.789.reg/spec.md",
+    "schema": "https://raw.githubusercontent.com/metarex-media/mrx-hosted/main/MRX.123.456.789.reg/schema.json",
+    "services": [
+      {
+        "id": "register",
+        "name": "MetaRex global register",
+        "description": "The main register from which others may cache cloned data",
+        "server": "https://metarex.media/reg",
+        "openapi": "https://raw.githubusercontent.com/metarex-media/mrx-hosted/main/MRX.123.456.789.abc/openapi-register.json",
+        "in": [
+          "MRX.123.456.789.abc",
+          "MRX.123.456.789.reg"
+        ],
+        "out": [
+          "MRX.123.456.789.reg"
+        ]
+      }
+    ]
+  }
+}

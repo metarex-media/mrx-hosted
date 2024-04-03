@@ -1,8 +1,8 @@
-* modified: 2023-08-09T21:20:50+00:00
-* registrant: Bruce Devlin
-* contact: bruce@metarex.media
-
-_ _ _
+---
+modified: 2023-08-09T21:20:50+00:00
+registrant: Bruce Devlin
+contact: bruce@metarex.media
+---
 
 # MRX.123.456.789.ghi
 

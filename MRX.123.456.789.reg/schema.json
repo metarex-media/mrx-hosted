@@ -1,9 +1,9 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://github.com/metarex.media/mrx-hosted/MRX.123.456.789.abc/schema.json",
+    "$id": "https://github.com/metarex.media/mrx-hosted/MRX.123.456.789.reg/schema.json",
     "title": "Metarex register entry",
     "type": "object",
-    "description": "v0.2.0 - DRAFT schema for register entries - see the specification",
+    "description": "0.2.0 - DRAFT schema for register entries - see the specification",
     "properties": {
         "metarexId": {
             "type": "string",
@@ -23,30 +23,41 @@
             "type": "string",
             "description": "a valid media type for the unwrapped metadata payload when sent using a POST request to a web service (https://www.iana.org/assignments/media-types/)"
         },
-        "timing": {
-            "type":"string",
-            "pattern":"clocked|embedded",
+        "timingIs": {
+            "type": "string",
+            "pattern": "clocked|embedded",
             "description": "clocked when there is one document per frame (MXF frame wrapping). embedded when the timing is inside the metadata document | blob"
         },
-        "treatAs":{
-            "type":"string",
-            "pattern":"text|binary",
+        "treatAs": {
+            "type": "string",
+            "pattern": "text|binary",
             "description": "text when the metadata is treated like text (JSON, YAML, XML etc), binary when the document is treated as a blob by some application (machine data, word docs, pdf docs and the like)"
+        },
+        "expires": {
+            "type": "string",
+            "pattern": "^(?:[1-9]\\d{3}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1\\d|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[1-9]\\d(?:0[48]|[2468][048]|[13579][26])|(?:[2468][048]|[13579][26])00)-02-29)T(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:Z|[+-][01]\\d:[0-5]\\d)$",
+            "description": "The UTC date+time when this entry may be removed from the register. If the property is missing then the entry never expires."
         },
         "mrx": {
             "type": "object",
             "description": "mrx controlled properties that enhance the metadata definition",
             "properties": {
                 "specification": {
-                    "type": ["string", "array"],
+                    "type": [
+                        "string",
+                        "array"
+                    ],
                     "description": "A valid url (or array or urls) that resolves to specify the metadata structure."
                 },
-                "schema":{
-                    "type": ["string", "array"],
+                "schema": {
+                    "type": [
+                        "string",
+                        "array"
+                    ],
                     "description": "A valid url (or array or urls) that resolves to validate the metadata structure."
                 },
-                "services":{
-                    "type":"object"
+                "services": {
+                    "type": "object"
                 }
             }
         },
@@ -58,7 +69,7 @@
             "metarexId",
             "name",
             "description",
-            "media-type"
+            "mediaType"
         ]
     },
     "additionalProperties": false

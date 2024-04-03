@@ -2,9 +2,10 @@
   "metarexId": "MRX.123.456.789.ghi",
   "name": "Unreal Engine Camera Position",
   "description": "Camera location information from Unreal Engine as JSON. Sample available: Rexy's sunbathing scene.",
-  "media-type": "application/json",
-  "timing": "clocked",
+  "mediaType": "application/json",
+  "timingIs": "clocked",
   "treatAs": "text",
+  "registerEntrySemVer": "0.2.0",
   "mrx": {
     "specification": "https://docs.unrealengine.com/4.27/en-US/API/Runtime/Engine/Camera/UCameraComponent/"
   }

@@ -1,0 +1,24 @@
+{
+    "metarexId": "MRX.123.456.789.mid",
+    "mediaType": "application/json",
+    "name": "NAB NinJS",
+    "description": "NinJS data to be used in the Metarex NAB Demo",
+    "timing": "clocked",
+    "treatAs": "text",
+    "mrx": {
+        "specification": "",
+        "schema": "https://iptc.org/std/ninjs/ninjs-schema_2.1.json",
+        "services": [
+            {
+                "API": "http://localhost:9000/battery",
+                "method": "",
+                "metarexId": "",
+                "APISchema": "./DemoAPI.yaml",
+                "output": "MRX.123.456.789.nml",
+                "description": "Convert Ninjs to NewsML via an API",
+                "serviceID": "MidtoNewsMLViaNormalisation",
+                "parameters": null
+            }
+        ]
+    }
+}
