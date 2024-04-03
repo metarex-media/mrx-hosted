@@ -69,7 +69,7 @@
             "metarexId",
             "name",
             "description",
-            "media-type"
+            "mediaType"
         ]
     },
     "additionalProperties": false

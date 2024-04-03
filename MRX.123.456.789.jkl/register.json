@@ -2,7 +2,7 @@
   "metarexId": "MRX.123.456.789.jkl",
   "name": "Unreal Engine Lighting Information",
   "description": "Unreal Engine Lighting Information as a CSV per sequence. Sample available: Rexy's sunbathing scene.",
-  "media-type": "text/csv",
+  "mediaType": "text/csv",
   "timingIs": "embedded",
   "treatAs": "text",
   "registerEntrySemVer": "0.2.0",

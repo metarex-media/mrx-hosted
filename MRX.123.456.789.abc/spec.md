@@ -67,10 +67,10 @@ published in the register to process the metadata. The `mediaType` field is the
 [Content-Type] of the unwrapped payload if it were placed in an [HTTP] response
 or an [HTTP] [POST] request.
 
-### `timingIs` (optional)
+### `timing` (optional)
 
 This field is a _hint_ for timeline processing by automation. If present, the
-`timingIs` field shall have be one of the values below:
+`timing` field shall have be one of the values below:
 
 * `clocked` when the timing of the metadata is controlled by the metarex
   wrapper. This is typically one document per frame (MXF frame wrapping).
@@ -93,30 +93,13 @@ This field is a _hint_ for metadata processing by automation. If present, the
   * **Examples**: machine data,  word documents, excel spreadsheets, jpeg
     images, png images, pdf documents
 
-### `expiresOn` (optional)
+### `expires` (optional)
 
-The UTC date/time in ISO 8601 format when the entry becomes deprecated.
-
-Any registration may have a `replacedBy` field that indicates a permanent
-replacement is available.
-
-If the `expiresOn` field is absent then the entry is considered permanent and
-never expires.
-
-The entity managing the register may remove all expired entries
-at any time after the `expiresOn` date. The persistance of any entry after this
-date cannot be guaranteed.
-
-### `registerEntrySemVer`
-
-A [semver](https://semver.org/) string representing the version of this
-document. This version of the document is:
-
-```json
-  "registerEntrySemVer": "0.1.0",
-```
-
-***
+The UTC date/time in ISO 8601 format when the entry may be removed from the
+register. If the field is absent then the entry is permanent and never expires.
+The entity managing the register may remove all expired entries at any time
+after the `expires` date. The persistance of any entry after this date cannot
+be guaranteed.
 
 ### `mrx` - extensions controlled by [MetaRex]
 
@@ -128,7 +111,7 @@ recommended that an extension of the base [MetaRex] [schema] is created for
 Use-Cases to specify these requirements rather than relying on the good behavior
 of humans typing into the register.
 
-#### `sample`
+### `sample`
 
 A url string or array of url strings that resolve to samples of the metadata
 defined by this [metaRex] entry.
@@ -151,8 +134,6 @@ section to allow for low-effort interoperability for complex metadata.
 
 A url string or array of url strings that resolve to human readable
 specification(s) of the data.
-
-***
 
 ### `extra` - extensions controlled by the registrant
 

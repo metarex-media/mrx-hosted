@@ -1,0 +1,260 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: MetaRex Register API
+    url: https://virtserver.swaggerhub.com/Mr-MXF/mrx-register/1.0.0
+info:
+  description: Basic API to query the register
+  version: "0.2.0"
+  title: mrx-register api
+  contact:
+    email: info@metarex.media
+  license:
+    name: BSD 3 Clause
+    url:  https://opensource.org/license/bsd-3-clause/
+tags:
+  - name: admins
+    description: Secured Admin-only calls for maintenance
+  - name: owners
+    description: Secured Register entry owners who authenticate for access
+  - name: public
+    description: Public access operations - unsecured
+paths:
+  /reg:
+    get:
+      tags:
+        - public
+      summary: search local register
+      operationId: searchRegisterEntries
+      description: >
+        ## Query the local MetaRex register
+
+        Defaults to returning the most recently added entries based on the
+        configuration of `limit`.
+
+        **Query parameter summary** (see definitions for defaults):
+
+        * 'skip=N' skips the first N entries of the returned results
+        * 'limit=L' return only `L` results.
+        * 'sort=ASC|DESC,CREATE|MODIFIED|ALPHABETICAL' sorting.
+        * 'format=MrxIds|EntriesList'
+
+      parameters:
+        - $ref: '#/components/parameters/skipParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/sortParam'
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EntriesResponseSchema'
+        '400':
+          description: bad input parameter
+
+  # /reg/{id}:
+  #   post:
+  #     tags:
+  #       - owner
+  #     summary: adds an inventory item
+  #     operationId: addRegisterEntry
+  #     description: Adds a new entry to the MetaRex register
+  #     responses:
+  #       '201':
+  #         description: item created
+  #       '400':
+  #         description: 'invalid input, object invalid'
+  #       '409':
+  #         description: an existing item already exists
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/MrxEntryPostSchema'
+  #       description: Inventory item to add
+
+# === components ==============================================================
+
+components:
+  #          query parameters used across different endpoints
+  #          ------------------------------------------------------------------
+  parameters:
+    limitParam:
+      name: limit
+      description: Maxiumum number of records to return.
+      in: query
+      schema:
+        $ref: '#/components/schemas/limitSchema'
+    skipParam:
+      name: skip
+      description: Number of records to skip before returning list.
+      in: query
+      schema:
+        $ref: '#/components/schemas/skipParamSchema'
+    sortParam:
+      name: sort
+      description: Sorting of returned records.
+      in: query
+      schema:
+        $ref: '#/components/schemas/sortParamSchema'
+
+# === schemas=== ==============================================================
+
+  schemas:
+
+    EntriesArraySchema:
+      oneOf:
+        - $ref: '#/components/schemas/MrxIdsArraySchema'
+        - $ref: '#/components/schemas/EntryArraySchema'
+
+    EntryArraySchema:
+      type: array
+      items:
+        type: object
+        required:
+          - mrxId
+          - name
+        properties:
+          mrxId:
+            type: string
+          name:
+            type: string
+
+    MrxIdsArraySchema:
+      type: array
+      items:
+        type: string
+
+
+    EntriesResponseSchema:
+      description: A list of Entry objects for presentation on a UI
+      type: object
+      required:
+        - apiVersion
+        - format
+        - limit
+        - queryId
+        - start
+        - entries
+      properties:
+        apiVersion:
+          $ref: '#/components/schemas/semVerSchema'
+        entries:
+          $ref: '#/components/schemas/EntriesArraySchema'
+        format:
+          type: string
+          enum:
+            - MrxIds
+            - EntriesList
+          description: The format of the elements of the list
+          example: MrxIds
+        limit:
+          type: integer
+          description: >
+            The value of the limit query param (if specified) or the default
+            value of limit (if unspecified in the query) or the maximum value
+            that can be used in this system if the specified value was too big.
+          example: 20
+        queryId:
+          type: string
+          format: uuid
+          description: The id of the query that generated this list
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        start:
+          type: integer
+          description: The number of records skipped before returning this list
+          example: 7321
+        serverInfo:
+          $ref: '#/components/schemas/serverInfoSchema'
+
+    MrxEntryPostSchema:
+      description: >
+        this API is an implementation of the document specified at
+        https://metarex.media/reg/MXF.123.456.769.abc
+
+    serverInfoSchema:
+      description: information about the server providing results
+      required:
+        - supportUrl
+        - version
+      type: object
+      properties:
+        name:
+          type: string
+          description: name of the server software
+          example: mrx-reg-server
+        homePage:
+          type: string
+          format: url
+          example: 'https://metarex.media'
+        supportUrl:
+          type: string
+          format: url
+          example: https://github.com/metarex-media/mrx-reg-server/issues
+        version:
+          type: string
+          pattern: '^([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$'
+          description: a valid semantic version for the running server as defined by semver.org
+          example: 'v0.5.1'
+
+    limitAllSchema:
+      description: >-
+        A value of ALL for limit will result in the maximum number of entries
+        allowed by the system (max limit)
+      type: string
+      enum:
+        - ALL
+
+    limitSchema:
+      oneOf:
+        - $ref: '#/components/schemas/limitValueSchema'
+        - $ref: '#/components/schemas/limitAllSchema'
+
+    limitValueSchema:
+      description: >
+        A limit can be an integer value indicating the maximum number of
+        entries to return in a query. A limit value set greater than the
+        system's internal max limit value will be clamped to the max limit
+        value number.
+      type: integer
+      default: 20
+
+    skipParamSchema:
+      description: an integer of the number of items to skip in responses
+      type: integer
+      default: 0
+
+    semVerSchema:
+      description: a valid semantic version as defined by semver.org
+      type: string
+      pattern: '^([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)\.([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$'
+      example: 'v0.5.1'
+
+    sortParamSchema:
+      description: >
+        A comma separated list of `sortParamElementSchema` values presented as
+        an array to the server.
+      type: array
+      items:
+        $ref: '#/components/schemas/sortParamElementSchema'
+
+    sortParamElementSchema:
+      description: >
+        Valid keywords are described here - how the logic is applied is
+        application specific. Recommended behaviour is that precedence is highest
+        at the start of the query string and lowest at the end.
+
+        `sort=ASC,MODIFIED,DESC,ALPHABETICAL`
+
+        would result in sorting by `ASC` first, then `MODIFIED`. `DESC` and
+        `ALPHABETICAL` are ignored because of mutual exclusivity rules.
+      type: string
+      enum:
+        - ASC
+        - DESC
+        - CREATE
+        - MODIFIED
+        - ALPHABETICAL

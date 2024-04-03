@@ -4,7 +4,7 @@
   "description": "JSON for MetaRex register entries",
   "media-type": "application/json",
   "registerEntrySemVer": "0.2.0",
-  "replaces": "MRX.123.456.789.reg",
+  "replaces": ["MRX.123.456.789.reg"],
   "mrx": {
     "specification": "https://github.com/metarex-media/mrx-hosted/blob/main/MRX.123.456.789.reg/spec.md",
     "schema": "https://raw.githubusercontent.com/metarex-media/mrx-hosted/main/MRX.123.456.789.reg/schema.json",
