@@ -10,6 +10,11 @@
             "pattern": "MRX(\\.([0-9abcdefghjkmnpqrstuvwxyz]{3})){4}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
             "description": "an MRX generated ID matching the pattern or a uuid type 1 | type 4"
         },
+          "replacedBy": {
+            "type": "string",
+            "pattern": "MRX(\\.([0-9abcdefghjkmnpqrstuvwxyz]{3})){4}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
+            "description": "an MRX generated ID matching the pattern or a uuid type 1 | type 4"
+        },
         "name": {
             "type": "string",
             "maxLength": 128,
@@ -57,20 +62,20 @@
                     "description": "A valid url (or array or urls) that resolves to validate the metadata structure."
                 },
                 "services": {
-                    "type": "object"
+                    "type": "array"
                 }
             }
         },
         "extra": {
             "type": "object",
             "description": "registrant controlled properties that enhance the metadata definition"
-        },
+        }
+    },
+    "additionalProperties": false,
         "required": [
             "metarexId",
             "name",
             "description",
             "mediaType"
         ]
-    },
-    "additionalProperties": false
 }
